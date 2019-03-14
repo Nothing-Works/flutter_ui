@@ -14,7 +14,14 @@ class LocationDetail extends StatelessWidget {
     );
   }
 
-  List<Widget> _renderChildren(Location location) {
+  List<Widget> _renderBody(BuildContext context, Location location) {
+    var result = <Widget>[];
+    result.add(_bannerImage(location.url, 200.0));
+    result.addAll(_renderChildren(context, location));
+    return result;
+  }
+
+  List<Widget> _renderChildren(BuildContext context, Location location) {
     var result = <Widget>[];
     location.facts.forEach((fact) {
       result.add(_title(fact.title));
@@ -23,9 +30,27 @@ class LocationDetail extends StatelessWidget {
     return result;
   }
 
-  Widget _title(String text) => Text(text);
+  Widget _bannerImage(String url, double height) {
+    return Container(
+      constraints: BoxConstraints.tightFor(height: height),
+      child: Image.network(url, fit: BoxFit.fitWidth),
+    );
+  }
 
-  Widget _text(String text) => Text(text);
+  Widget _title(String text) {
+    return Container(
+      padding: EdgeInsets.all(25.0),
+      child: Text(
+        text,
+        textAlign: TextAlign.left,
+        style: TextStyle(fontSize: 25.0, color: Colors.black),
+      ),
+    );
+  }
+
+  Widget _text(String text) {
+    return Container(padding: EdgeInsets.all(25.0), child: Text(text));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +61,7 @@ class LocationDetail extends StatelessWidget {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: _renderChildren(_location),
+        children: _renderBody(context, _location),
       ),
     );
   }
