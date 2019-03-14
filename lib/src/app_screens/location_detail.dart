@@ -20,11 +20,11 @@ class LocationDetail extends StatelessWidget {
       result.add(_title(fact.title));
       result.add(_text(fact.text));
     });
-
     return result;
   }
 
   Widget _title(String text) => Text(text);
+
   Widget _text(String text) => Text(text);
 
   @override
