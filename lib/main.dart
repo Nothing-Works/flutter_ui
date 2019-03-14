@@ -7,7 +7,6 @@ import './src/models/location.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-  final Location _mockLocation = MockLocation.fetchAny();
   final List<Location> _mockLocations = MockLocation.fetchAll();
   @override
   Widget build(BuildContext context) {
