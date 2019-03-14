@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../models/location.dart';
+import '../styles/styles.dart';
 
 class LocationDetail extends StatelessWidget {
   final Location _location;
@@ -43,13 +44,18 @@ class LocationDetail extends StatelessWidget {
       child: Text(
         text,
         textAlign: TextAlign.left,
-        style: TextStyle(fontSize: 25.0, color: Colors.black),
+        style: Style.headerLarge,
       ),
     );
   }
 
   Widget _text(String text) {
-    return Container(padding: EdgeInsets.all(25.0), child: Text(text));
+    return Container(
+        padding: EdgeInsets.all(25.0),
+        child: Text(
+          text,
+          style: Style.textDefault,
+        ));
   }
 
   @override
