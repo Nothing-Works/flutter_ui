@@ -1,4 +1,4 @@
-import './location_fact.dart';
+import 'package:flutter_ui/src/apps/location/models/location_fact.dart';
 
 class Location {
   final String name;

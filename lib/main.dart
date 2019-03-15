@@ -1,15 +1,5 @@
 import 'package:flutter/material.dart';
 
-import './src/app_screens/location_list.dart';
-import './src/mocks/mock_location.dart';
-import './src/models/location.dart';
+import './src/apps/location/location_app.dart';
 
-void main() => runApp(MyApp());
-
-class MyApp extends StatelessWidget {
-  final List<Location> _mockLocations = MockLocation.fetchAll();
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(home: LocationList(_mockLocations));
-  }
-}
+void main() => runApp(LocationApp());
