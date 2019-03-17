@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
 
-import './src/apps/location/location_app.dart';
+import './src/apps/talent_hire/talent_hire_app.dart';
 
-void main() => runApp(LocationApp());
+void main() => runApp(TalentHire());
