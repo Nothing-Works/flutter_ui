@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ui/src/apps/ice_cream_app/ice_cream_app.dart';
 
-import './src/apps/talent_hire/talent_hire_app.dart';
-
-void main() => runApp(TalentHire());
+void main() => runApp(IceCreamApp());
