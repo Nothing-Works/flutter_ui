@@ -1,4 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ui/src/apps/ice_cream_app/ice_cream_app.dart';
+import 'package:flutter_ui/src/apps/login/login_app.dart';
 
-void main() => runApp(IceCreamApp());
+void main() => runApp(LoginApp());
