@@ -8,7 +8,7 @@ class UiApp extends StatelessWidget {
         appBar: AppBar(
           title: Text('UI App'),
         ),
-        body: Container(
+        body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
