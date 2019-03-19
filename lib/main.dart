@@ -1,4 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ui/src/apps/ui/ui_app.dart';
+import 'package:flutter_ui/src/apps/json/json.dart';
 
-void main() => runApp(UiApp());
+void main() => runApp(JsonApp());
