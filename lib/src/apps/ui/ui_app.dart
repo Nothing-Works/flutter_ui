@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ui/src/apps/ui/widgets/text.dart';
 
 class UiApp extends StatelessWidget {
   @override
@@ -9,8 +8,15 @@ class UiApp extends StatelessWidget {
         appBar: AppBar(
           title: Text('UI App'),
         ),
-        body: Center(
-          child: UiText(),
+        body: Container(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              Image.asset('assets/images/pic1.jpg'),
+              Image.asset('assets/images/pic2.jpg'),
+              Image.asset('assets/images/pic3.jpg'),
+            ],
+          ),
         ),
       ),
     );
