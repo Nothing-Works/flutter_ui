@@ -10,11 +10,10 @@ class JsonHome extends StatefulWidget {
 }
 
 class _JsonHomeState extends State<JsonHome> {
-  List<Post> posts;
+  List<Post> posts = <Post>[];
 
   Future loadPosts() async {
-    var content = await rootBundle.loadString('data/data.json');
-    List list = jsonDecode(content);
+    List list = jsonDecode(await rootBundle.loadString('data/data.json'));
 
     List<Post> things = list.map((a) {
       return Post.fromJson(a);
