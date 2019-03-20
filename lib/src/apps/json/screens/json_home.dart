@@ -15,13 +15,7 @@ class _JsonHomeState extends State<JsonHome> {
   Future loadPosts() async {
     List list = jsonDecode(await rootBundle.loadString('data/data.json'));
 
-    List<Post> things = list.map((a) {
-      return Post.fromJson(a);
-    }).toList();
-
-    setState(() {
-      posts = things;
-    });
+    setState(() => posts = list.map((a) => Post.fromJson(a)).toList());
   }
 
   @override
