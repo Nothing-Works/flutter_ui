@@ -14,7 +14,8 @@ class _JsonHomeState extends State<JsonHome> {
 
   Future loadPosts() async {
     var content = await rootBundle.loadString('data/data.json');
-    List list = json.decode(content);
+    List list = jsonDecode(content);
+
     List<Post> things = list.map((a) {
       return Post.fromJson(a);
     }).toList();
@@ -37,11 +38,12 @@ class _JsonHomeState extends State<JsonHome> {
         title: Text('Json Apps'),
       ),
       body: ListView.builder(
-          itemCount: 2,
+          itemCount: posts.length,
           itemBuilder: (BuildContext context, int index) {
+            var post = posts[index];
             return ListTile(
-              title: Text(posts[index].title),
-              subtitle: Text(posts[index].body),
+              title: Text(post.title),
+              subtitle: Text(post.body),
             );
           }),
     );
