@@ -1,4 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ui/src/apps/http_app/http_app.dart';
+import 'package:flutter_ui/src/apps/bloc_vanilla/bloc_vanilla_app.dart';
 
-void main() => runApp(HttpApp());
+void main() => runApp(BlocVanilla());
