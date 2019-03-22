@@ -25,8 +25,11 @@ class _CounterState extends State<Counter> {
       appBar: AppBar(
         title: Text('Counter'),
       ),
-      floatingActionButton:
-          FlatButton(onPressed: () {}, child: Icon(Icons.add)),
+      floatingActionButton: FlatButton(
+          onPressed: () {
+            counterBloc.increment();
+          },
+          child: Icon(Icons.add)),
       body: StreamBuilder<int>(
         stream: counterBloc.counter,
         builder: (BuildContext context, AsyncSnapshot snapshot) {

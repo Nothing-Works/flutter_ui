@@ -12,6 +12,12 @@ class CounterBloc {
     _counterFetcher.sink.add(counter);
   }
 
+  increment() async {
+    int counter = await _counter.increment();
+
+    _counterFetcher.sink.add(counter);
+  }
+
   dispose() {
     _counterFetcher.close();
   }

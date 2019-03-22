@@ -4,4 +4,6 @@ class CounterRepository {
   final _counterApiProvider = CounterApiProvider();
 
   Future<int> fetchCounter() async => _counterApiProvider.fetchCounter();
+
+  Future<int> increment() async => _counterApiProvider.increment();
 }
