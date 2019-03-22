@@ -4,5 +4,5 @@ import 'package:flutter_ui/src/apps/bloc_vanilla/models/post.dart';
 class PostRepository {
   final postApi = PostApiProvider();
 
-  Future<List<Post>> fetchAllPost() => postApi.fetchAll();
+  Future<List<Post>> fetchAllPost() async => postApi.fetchAll();
 }
