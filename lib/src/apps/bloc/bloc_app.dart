@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ui/src/apps/bloc/screens/home.dart';
+import 'package:flutter_ui/src/apps/bloc/ui/home.dart';
 
 class BlocApp extends StatelessWidget {
   @override
