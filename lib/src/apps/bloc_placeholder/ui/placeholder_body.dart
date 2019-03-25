@@ -30,6 +30,7 @@ class _PlaceHolderBodyState extends State<PlaceHolderBody> {
               itemBuilder: (BuildContext context, int index) {
                 var post = state.posts[index];
                 return ListTile(
+                  leading: Text('${post.id}'),
                   title: Text(post.title),
                   subtitle: Text(post.body),
                 );
