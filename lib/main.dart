@@ -1,4 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ui/src/apps/bloc_post/post_app.dart';
+import 'package:flutter_ui/src/apps/bloc_placeholder/placeholder.dart';
 
-void main() => runApp(PostApp());
+void main() => runApp(PlaceHolder());
