@@ -10,10 +10,33 @@ class CounterPage extends StatelessWidget {
 
     return BlocBuilder<CounterEvent, int>(
       builder: (BuildContext context, int state) {
-        return Center(
-          child: Text(
-            '$state',
-            style: TextStyle(fontSize: 24.0),
+        return Scaffold(
+          appBar: AppBar(
+            title: Text('Counter example'),
+          ),
+          body: Center(
+            child: Text(
+              '$state',
+              style: TextStyle(fontSize: 24.0),
+            ),
+          ),
+          floatingActionButton: Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: <Widget>[
+              FloatingActionButton(
+                onPressed: () {
+                  _counterBloc.dispatch(CounterEvent.increment);
+                },
+                child: Icon(Icons.add),
+              ),
+              FloatingActionButton(
+                onPressed: () {
+                  _counterBloc.dispatch(CounterEvent.decrement);
+                },
+                child: Icon(Icons.remove),
+              )
+            ],
           ),
         );
       },
