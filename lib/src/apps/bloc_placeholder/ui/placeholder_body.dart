@@ -23,7 +23,7 @@ class _PlaceHolderBodyState extends State<PlaceHolderBody> {
           return CircularProgressIndicator();
         }
         if (state is PostsError) {
-          return Text('Fail to load');
+          return Text(state.toString());
         }
         if (state is PostsLoaded) {
           return ListView.builder(
