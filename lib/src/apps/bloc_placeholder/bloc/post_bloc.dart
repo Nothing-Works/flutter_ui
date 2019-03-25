@@ -19,7 +19,6 @@ class PostBloc extends Bloc<PostEvent, PostState> {
         try {
           final List<Post> posts = await _postRepository.fetchAll();
           yield PostsLoaded(posts);
-          return;
         } catch (_) {
           yield PostsError();
         }
