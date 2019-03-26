@@ -26,6 +26,8 @@ dependencies:
   flutter_bloc:
   equatable:
   meta:
+  redux:
+  flutter_redux:
 
 
   # The following adds the Cupertino Icons font to your application.
