@@ -28,6 +28,8 @@ dependencies:
   meta:
   redux:
   flutter_redux:
+  flutter_redux_dev_tools:
+  redux_dev_tools:
 
 
   # The following adds the Cupertino Icons font to your application.
