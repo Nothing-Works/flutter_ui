@@ -1,4 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ui/src/apps/redux/redux_app.dart';
+import 'package:flutter_ui/src/apps/bloc_list/bloc_list.dart';
 
-void main() => runApp(ReduxApp());
+void main() => runApp(BlocList());
