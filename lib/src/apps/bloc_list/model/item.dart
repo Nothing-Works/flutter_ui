@@ -12,6 +12,10 @@ class Item extends Equatable {
   final String body;
   final bool complete;
 
+  Item copyWith({int id,String title,String body,bool complete}){
+    return Item(id: id?? this.id,title: title??this.title,body: body??this.body,complete: complete??this.complete);
+}
+
   Item({this.id, this.title, this.body, this.complete})
       : super([id, title, body, complete]);
 

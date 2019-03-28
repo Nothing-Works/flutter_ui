@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 
 import './bloc.dart';
+import '../model/item.dart';
 import '../repository/item_repository.dart';
 
 class ListBloc extends Bloc<ListEvent, ListState> {
@@ -26,6 +27,17 @@ class ListBloc extends Bloc<ListEvent, ListState> {
         } catch (_) {
           yield ItemListError();
         }
+      }
+    }
+
+    if (event is ToggleItem) {
+      if (currentState is ItemListLoaded) {
+        final List<Item> updatedItems =
+            (currentState as ItemListLoaded).items.map((item) {
+          return item.id == event.item.id ? event.item : item;
+        }).toList();
+
+        yield ItemListLoaded(items: updatedItems);
       }
     }
   }

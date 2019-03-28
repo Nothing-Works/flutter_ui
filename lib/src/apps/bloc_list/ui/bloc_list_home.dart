@@ -47,7 +47,8 @@ class _BlocListHomeState extends State<BlocListHome> {
                           leading: Checkbox(
                             value: item.complete,
                             onChanged: (checked) {
-                              print(checked);
+                              _itemBloc.dispatch(ToggleItem(
+                                  item: item.copyWith(complete: checked)));
                             },
                           ),
                           title: Text(item.title),
