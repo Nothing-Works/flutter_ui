@@ -20,25 +20,31 @@ class ListBloc extends Bloc<ListEvent, ListState> {
   @override
   Stream<ListState> mapEventToState(ListEvent event) async* {
     if (event is FetchItems) {
-      if (currentState is InitialListState) {
-        try {
-          var items = await _itemRepository.fetchAll();
-          yield ItemListLoaded(items: items);
-        } catch (_) {
-          yield ItemListError();
-        }
+      yield* _mapFetchItemToState();
+    }
+    if (event is ToggleItem) {
+      yield* _mapToggleItem(event);
+    }
+  }
+
+  Stream<ListState> _mapFetchItemToState() async* {
+    if (currentState is InitialListState) {
+      try {
+        var items = await _itemRepository.fetchAll();
+        yield ItemListLoaded(items: items);
+      } catch (_) {
+        yield ItemListError();
       }
     }
+  }
 
-    if (event is ToggleItem) {
-      if (currentState is ItemListLoaded) {
-        final List<Item> updatedItems =
-            (currentState as ItemListLoaded).items.map((item) {
-          return item.id == event.item.id ? event.item : item;
-        }).toList();
-
-        yield ItemListLoaded(items: updatedItems);
-      }
+  Stream<ListState> _mapToggleItem(ToggleItem event) async* {
+    if (currentState is ItemListLoaded) {
+      final List<Item> updatedItems =
+          (currentState as ItemListLoaded).items.map((item) {
+        return item.id == event.item.id ? event.item : item;
+      }).toList();
+      yield ItemListLoaded(items: updatedItems);
     }
   }
 }
