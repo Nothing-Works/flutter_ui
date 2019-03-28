@@ -12,6 +12,11 @@ class ListBloc extends Bloc<ListEvent, ListState> {
   ListState get initialState => InitialListState();
 
   @override
+  void onTransition(Transition<ListEvent, ListState> transition) {
+    print(transition);
+  }
+
+  @override
   Stream<ListState> mapEventToState(ListEvent event) async* {
     if (event is FetchItems) {
       if (currentState is InitialListState) {
