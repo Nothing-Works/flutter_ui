@@ -5,3 +5,10 @@ import 'package:meta/meta.dart';
 abstract class ListEvent extends Equatable {
   ListEvent([List props = const []]) : super(props);
 }
+
+class FetchItems extends ListEvent {
+  @override
+  String toString() {
+    return 'FetchItems';
+  }
+}
