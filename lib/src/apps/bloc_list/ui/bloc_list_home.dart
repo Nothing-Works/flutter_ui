@@ -24,30 +24,36 @@ class _BlocListHomeState extends State<BlocListHome> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Bloc List')),
-      body: BlocBuilder(
-          bloc: _itemBloc,
-          builder: (BuildContext context, ListState state) {
-            if (state is InitialListState) {
-              return Center(
-                child: CircularProgressIndicator(),
-              );
-            }
-            if (state is ItemListError) {
-              return Center(
-                child: Text('failed to fetch posts'),
-              );
-            }
-            if (state is ItemListLoaded) {
-              return ListView.builder(
-                  itemCount: state.items.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    var item = state.items[index];
-                    return ListTile(
-                        title: Text(item.title), subtitle: Text(item.body));
-                  });
-            }
-          }),
-    );
+        appBar: AppBar(title: Text('Bloc List')),
+        body: BlocBuilder(
+            bloc: _itemBloc,
+            builder: (BuildContext context, ListState state) {
+              if (state is InitialListState) {
+                return Center(
+                  child: CircularProgressIndicator(),
+                );
+              }
+              if (state is ItemListError) {
+                return Center(
+                  child: Text('failed to fetch posts'),
+                );
+              }
+              if (state is ItemListLoaded) {
+                return ListView.builder(
+                    itemCount: state.items.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      var item = state.items[index];
+                      return ListTile(
+                          leading: Checkbox(
+                            value: item.complete,
+                            onChanged: (checked) {
+                              print(checked);
+                            },
+                          ),
+                          title: Text(item.title),
+                          subtitle: Text(item.body));
+                    });
+              }
+            }));
   }
 }
