@@ -26,12 +26,23 @@ class FilteredItemBloc extends Bloc<FilteredItemEvent, FilteredItemState> {
   }
 
   @override
-  FilteredItemState get initialState => InitialFilteredItemState();
+  FilteredItemState get initialState {
+    if (itemBloc.currentState is ItemListLoaded) {
+      return FilteredItemLoaded(
+          items: (itemBloc.currentState as ItemListLoaded).items,
+          filter: VisibilityFilter.all);
+    } else {
+      return InitialFilteredItemState();
+    }
+  }
 
   @override
   Stream<FilteredItemState> mapEventToState(FilteredItemEvent event) async* {
     if (event is UpdateFilter) {
       yield* _mapUpdateFilterToState(event);
+    }
+    if (event is UpdateItems) {
+      yield* _mapUpdateItemToState(event);
     }
   }
 
@@ -48,6 +59,16 @@ class FilteredItemBloc extends Bloc<FilteredItemEvent, FilteredItemState> {
               (itemBloc.currentState as ItemListLoaded).items, event.filter),
           filter: event.filter);
     }
+  }
+
+  Stream<FilteredItemState> _mapUpdateItemToState(UpdateItems event) async* {
+    final visibilityFilter = currentState is FilteredItemLoaded
+        ? (currentState as FilteredItemLoaded).filter
+        : VisibilityFilter.all;
+    yield FilteredItemLoaded(
+        items: _mapItemsToFilteredItems(
+            (itemBloc.currentState as ItemListLoaded).items, visibilityFilter),
+        filter: visibilityFilter);
   }
 
   List<Item> _mapItemsToFilteredItems(

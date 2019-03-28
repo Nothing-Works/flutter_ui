@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../bloc/bloc.dart';
+import '../filter_bloc/bloc.dart';
 import '../model/visibility_filter.dart';
 
 class BlocListHome extends StatefulWidget {
@@ -11,9 +12,11 @@ class BlocListHome extends StatefulWidget {
 
 class _BlocListHomeState extends State<BlocListHome> {
   final ListBloc _itemBloc = ListBloc();
+  FilteredItemBloc _filterBloc;
 
   _BlocListHomeState() {
     _itemBloc.dispatch(FetchItems());
+    _filterBloc = FilteredItemBloc(_itemBloc);
   }
 
   @override
@@ -30,8 +33,8 @@ class _BlocListHomeState extends State<BlocListHome> {
           actions: <Widget>[
             PopupMenuButton<VisibilityFilter>(
               onSelected: (filter) {
-                print(filter);
-                },
+                _filterBloc.dispatch(UpdateFilter(filter));
+              },
               itemBuilder: (BuildContext context) {
                 return <PopupMenuItem<VisibilityFilter>>[
                   PopupMenuItem<VisibilityFilter>(
@@ -52,19 +55,14 @@ class _BlocListHomeState extends State<BlocListHome> {
           ],
         ),
         body: BlocBuilder(
-            bloc: _itemBloc,
-            builder: (BuildContext context, ListState state) {
-              if (state is InitialListState) {
+            bloc: _filterBloc,
+            builder: (BuildContext context, FilteredItemState state) {
+              if (state is InitialFilteredItemState) {
                 return Center(
                   child: CircularProgressIndicator(),
                 );
               }
-              if (state is ItemListError) {
-                return Center(
-                  child: Text('failed to fetch posts'),
-                );
-              }
-              if (state is ItemListLoaded) {
+              if (state is FilteredItemLoaded) {
                 return ListView.builder(
                     itemCount: state.items.length,
                     itemBuilder: (BuildContext context, int index) {
