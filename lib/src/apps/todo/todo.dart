@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import './ui/todo_home.dart';
+import 'package:flutter_ui/src/apps/todo/ui/screens/todo_home.dart';
 
 class TodoApp extends StatelessWidget {
   @override

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../blocs/todo_bloc/bloc.dart';
+import '../../blocs/todo_bloc/bloc.dart';
 
 class TodoHome extends StatefulWidget {
   @override
