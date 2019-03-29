@@ -1,4 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ui/src/apps/bloc_list/bloc_list.dart';
+import 'package:flutter_ui/src/apps/todo/todo.dart';
 
-void main() => runApp(BlocList());
+void main() => runApp(TodoApp());
